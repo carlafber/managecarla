@@ -1,0 +1,57 @@
+<odoo>
+  <data>
+    <record model="ir.ui.view" id="managecarla.devs_partner_form">
+      <field name="name">manage devs form</field>
+      <field name="model">res.partner</field>
+      <field name="inherit_id" ref="base.view_partner_form"></field>
+      <field name="mode">primary</field>
+      <field name="arch" type="xml">
+        <xpath expr="//sheet/notebook/page[@name='internal_notes']" position="after">
+          <page name="devs" string="Devs">
+            <group>
+              <group>
+                  <field name="technologies_id"></field>
+                  <field name="is_dev"></field>
+              </group>
+            </group>
+          </page>
+        </xpath>
+      </field>
+    </record>
+
+
+    <record model="ir.actions.act_window" id="managecarla.action_developer_window">
+      <field name="name">Lista de desarrolladores</field>
+      <field name="res_model">res.partner</field>
+      <field name="view_mode">tree,form</field>
+      <field name="domain">[('is_dev', '!=', False)]</field>
+    </record>
+
+
+    <record model="ir.actions.act_window.view" id="managecarla.action_developer_tree">   
+      <field name="sequence" eval="1"></field>
+      <field name="view_mode">tree</field>
+      <field name="view_id" ref="base.view_partner_tree"></field>
+      <field name="act_window_id" ref="managecarla.action_developer_window"></field>
+    </record>
+
+
+    <record model="ir.actions.act_window.view" id="managecarla.action_developer_form">   
+      <field name="sequence" eval="2"></field>
+      <field name="view_mode">form</field>
+      <field name="view_id" ref="managecarla.devs_partner_form"></field>
+      <field name="act_window_id" ref="managecarla.action_developer_window"></field>
+    </record>
+
+    <!-- Top menu item -->
+    <menuitem name="Dirección de Carla" id="menu_managecarla_raiz"/>
+
+    <!-- menu categories -->
+    <menuitem name="Dirección" id="menu_managecarla_listado" parent="menu_managecarla_raiz"/>
+
+    <!-- actions -->
+    <menuitem name="Desarrolladores" id="menu_managecarla_desarrolladores" parent="menu_managecarla_listado"
+              action="managecarla.action_developer_window"/>
+
+  </data>
+</odoo>
