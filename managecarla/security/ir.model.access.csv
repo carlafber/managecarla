@@ -1,6 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_managecarla_task,managecarla.task,model_managecarla_task,base.group_user,1,1,1,1
-access_managecarla_sprint,managecarla.sprint,model_managecarla_sprint,base.group_user,1,1,1,1
-access_managecarla_project,managecarla.project,model_managecarla_project,base.group_user,1,1,1,1
-access_managecarla_history,managecarla.history,model_managecarla_history,base.group_user,1,1,1,1
-access_managecarla_technology,managecarla.technology,model_managecarla_technology,base.group_user,1,1,1,1
