@@ -1,0 +1,64 @@
+<odoo>
+  <data>
+
+    <record model="ir.ui.view" id="vista_managecarla_history_tree">
+      <field name="name">vista_managecarla_history_tree</field>
+      <field name="model">managecarla.history</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="description"/>
+          <field name="project_id"/>
+          <field name="tasks_id"/>
+          <field name="used_technologies"/>
+        </tree>
+      </field>
+    </record>
+
+    
+    <record model="ir.ui.view" id="vista_managecarla_history_form">
+      <field name="name">vista_managecarla_history_form</field>
+      <field name="model">managecarla.history</field>
+      <field name="arch" type="xml">
+        <form string="formulario_history">
+          <sheet>
+            <group name="group_top">
+                <field name="name"/>
+                <field name="description"/>
+                <field name="project_id"/>
+                <field name="tasks_id"/>
+                <field name="used_technologies"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+
+    <record model="ir.actions.act_window" id="accion_managecarla_history_form">
+      <field name="name">Listado de historias</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">managecarla.history</field>
+      <field name="view_mode">tree,form</field>
+      <field name="help" type="html">
+        <p class="oe_view_nocontent_create">
+          Historias
+        </p>
+        <p> Click <strong> 'Nuevo' </strong> para añadir nuevos elementos
+         </p>
+      </field>
+    </record> 
+
+
+    <!-- Top menu item -->
+    <menuitem name="Dirección de Carla" id="menu_managecarla_raiz"/>
+
+    <!-- menu categories -->
+    <menuitem name="Dirección" id="menu_managecarla_listado" parent="menu_managecarla_raiz"/>
+
+    <!-- actions -->
+    <menuitem name="Historias" id="menu_managecarla_historias" parent="menu_managecarla_listado"
+              action="accion_managecarla_history_form"/>
+
+  </data>
+</odoo>
